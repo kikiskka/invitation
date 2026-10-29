@@ -4,10 +4,9 @@ window.INVITE_CONFIG = {
   recipientName: "Твоё имя",
   pageTitle: "Маленькое приглашение",
   footerText: "сделано с теплом",
-  // Вставь URL опубликованного Google Apps Script Web App (оканчивается на /exec).
-  // Токен Telegram-бота здесь НЕ хранить — он задаётся только в настройках Apps Script.
+  // Твой публичный username в Telegram (без @). Должен быть задан в Настройках Telegram.
   telegram: {
-    webAppUrl: "https://script.google.com/macros/s/AKfycbxrQgpo4UdqejznUZ8zYB1zp_moaTgIBTrLLXYeHqKf6C9-IN3kgSalJ8FUFkI4CUtetw/exec"
+    username: "ТВОЙ_USERNAME"
   },
   theme: {
     background: "#fff4f7",
@@ -82,7 +81,7 @@ window.INVITE_CONFIG = {
     title: "Кажется, нас ждёт хороший день",
     description: "Вот что у нас получилось. Можно вернуться и всё изменить.",
     editButton: "Изменить план",
-    finishButton: "Всё отлично!"
+    finishButton: "Отправить в Telegram 💌"
   },
   labels: {
     back: "Назад",

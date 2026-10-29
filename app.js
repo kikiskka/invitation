@@ -174,8 +174,8 @@
         <div class="summary-item"><strong>Атмосфера</strong><span>${escapeHTML(val(state.moods))}</span></div>
         <div class="summary-item"><strong>Комментарий</strong><span>${escapeHTML(state.comment.trim() || "Без дополнительных пожеланий")}</span></div>
       </div>
-      <div class="button-row">${button(x.editButton || "Изменить план", "go-4", "ghost-btn")}${button(x.finishButton || "Отправить ответ", "finish")}</div>
-      <p class="notice" id="send-status" role="status" aria-live="polite">Нажми «Отправить ответ», чтобы отправить план в Telegram.</p>
+      <div class="button-row">${button(x.editButton || "Изменить план", "go-4", "ghost-btn")}${button(x.finishButton || "Отправить в Telegram", "finish")}</div>
+      <p class="notice" id="send-status" role="status" aria-live="polite">Нажми кнопку ниже: откроется Telegram с готовым сообщением, останется только нажать «Отправить».</p>
     </div>`);
   }
   function validatePlan() {
@@ -196,47 +196,42 @@
     return true;
   }
 
-  function buildSubmission() {
-    return {
-      senderName: C.senderName || "Не указано",
-      recipientName: C.recipientName || "Не указано",
-      date: fmtDate(state.date),
-      time: state.time,
-      food: state.food.slice(),
-      activities: state.activities.slice(),
-      moods: state.moods.slice(),
-      comment: state.comment.trim() || "Без дополнительных пожеланий",
-      pageTitle: C.pageTitle || "Интерактивное приглашение",
-      submittedAt: new Date().toISOString()
-    };
+  function buildMessage() {
+    const lines = (list) => list.length ? list.map(v => "• " + v).join("\n") : "• не выбрано";
+    return [
+      "💌 Мой ответ на приглашение",
+      "",
+      "📅 Дата: " + fmtDate(state.date),
+      "🕐 Время: " + (state.time || "не выбрано"),
+      "",
+      "🍽 Еда / место:",
+      lines(state.food),
+      "",
+      "🎈 Чем займёмся:",
+      lines(state.activities),
+      "",
+      "✨ Настроение:",
+      lines(state.moods),
+      "",
+      "💬 Пожелания:",
+      state.comment.trim() || "Без дополнительных пожеланий"
+    ].join("\n");
   }
 
-  async function sendToTelegram() {
-    const endpoint = String(C.telegram?.webAppUrl || "").trim();
+  function sendToTelegram() {
+    const username = String(C.telegram?.username || "").trim().replace(/^@/, "");
     const status = $("#send-status");
-    const finishButton = $('[data-action="finish"]');
-    if (!endpoint || !/^https:\/\/script\.google\.com\/macros\/s\/[^/]+\/exec(?:\?.*)?$/.test(endpoint)) {
-      if (status) status.textContent = "Отправка пока не настроена. Добавь URL веб-приложения Google Apps Script в config.js.";
+    if (!/^[A-Za-z][A-Za-z0-9_]{4,31}$/.test(username)) {
+      if (status) status.textContent = "Отправка пока не настроена. Укажи telegram.username в config.js.";
       return;
     }
-    if (finishButton) { finishButton.disabled = true; finishButton.textContent = "Отправка…"; }
-    if (status) status.textContent = "Отправляю план в Telegram…";
-    try {
-      // no-cors avoids a browser CORS preflight with Apps Script. Its response is opaque,
-      // so the page can confirm only that the request was handed to the network.
-      await fetch(endpoint, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {"Content-Type": "text/plain;charset=UTF-8"},
-        body: JSON.stringify(buildSubmission())
-      });
-      if (status) status.textContent = "Запрос отправлен. Проверь Telegram. Если сообщения нет, проверь настройки Apps Script и бота.";
-      toast("Запрос отправлен");
-    } catch (error) {
-      if (status) status.textContent = "Не удалось отправить запрос. Проверь подключение к интернету и попробуй ещё раз.";
-    } finally {
-      if (finishButton) { finishButton.disabled = false; finishButton.textContent = C.summary?.finishButton || "Отправить ответ"; }
-    }
+    const message = buildMessage();
+    // Копируем текст заранее: если Telegram не подставит его сам, останется только вставить.
+    try { navigator.clipboard?.writeText(message).catch(() => {}); } catch (e) {}
+    const url = `https://t.me/${username}?text=${encodeURIComponent(message)}`;
+    if (status) status.textContent = "Открываю Telegram. Нажми «Отправить». Если текста в поле нет, просто вставь его: он уже скопирован.";
+    toast("Открываю Telegram…");
+    window.location.href = url;
   }
 
   function celebrate() {
