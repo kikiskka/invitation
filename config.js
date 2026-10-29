@@ -6,7 +6,7 @@ window.INVITE_CONFIG = {
   footerText: "сделано с теплом",
   // Твой публичный username в Telegram (без @). Должен быть задан в Настройках Telegram.
   telegram: {
-    username: "ТВОЙ_USERNAME"
+    username: "kikiskka"
   },
   theme: {
     background: "#fff4f7",
