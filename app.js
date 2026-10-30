@@ -45,9 +45,17 @@
     screen.classList.add("exiting");
     window.setTimeout(() => { state.step = step; renderStep(); }, state.motion ? 150 : 0);
   }
-  function heroArt(icon = "🐻") {
-    return `<div class="hero-art" aria-hidden="true"><span class="spark s1">✦</span><span class="spark s2">♡</span><span class="spark s3">✧</span><div class="mascot">${icon}</div></div>`;
-  }
+  function heroArt(gif = "opening.gif") {
+  return `
+    <div class="hero-art" aria-hidden="true">
+      <img
+        class="custom-gif"
+        src="./gifs/${gif}"
+        alt=""
+      >
+    </div>
+  `;
+}
   function button(text, action, cls = "primary-btn", attrs = "") {
     return `<button type="button" class="${cls}" data-action="${action}" ${attrs}>${escapeHTML(text)}</button>`;
   }
@@ -70,7 +78,7 @@
   function renderOpening() {
     const x = C.opening || {};
     render(`<div class="card center">
-      ${heroArt("ʕ•ᴥ•ʔ")}
+      ${heroArt("hi.gif")}
       <span class="eyebrow">${escapeHTML(x.eyebrow || "")}</span>
       <h1>${escapeHTML(x.title || "Приглашение для тебя")}</h1>
       <p>${escapeHTML((x.description || "").replaceAll("{recipient}", C.recipientName || ""))}</p>
@@ -92,7 +100,7 @@
   function renderInvitation() {
     const x = C.invitation || {};
     render(`<div class="card center">
-      ${heroArt("ʕ♡ᴥ♡ʔ")}
+      ${heroArt("lovely.gif")}
       <span class="eyebrow">${escapeHTML(x.eyebrow || "")}</span>
       <h1>${escapeHTML(x.title || "")}</h1><p>${escapeHTML(x.description || "")}</p>
       <div class="question-actions" id="question-actions">
@@ -105,7 +113,7 @@
   function renderCelebration() {
     const x = C.celebration || {};
     render(`<div class="card center" id="celebrate-card">
-      ${heroArt("ʕ≧ᴥ≦ʔ")}
+      ${heroArt("verylovely.gif")}
       <span class="eyebrow">♡ ${escapeHTML(C.recipientName || "для тебя")} ♡</span>
       <h1>${escapeHTML(x.title || "")}</h1><p>${escapeHTML(x.description || "")}</p>
       <div class="button-row">${button("Придумать встречу", "schedule")}</div>
@@ -165,7 +173,7 @@
   function renderSummary() {
     const x = C.summary || {};
     render(`<div class="card">
-      ${heroArt("ʕ•ᴥ•ʔ")}
+      ${heroArt("kaif.gif")}
       <span class="eyebrow">${escapeHTML(x.eyebrow || "")}</span><h2>${escapeHTML(x.title || "")}</h2><p>${escapeHTML(x.description || "")}</p>
       <div class="summary-list">
         <div class="summary-item"><strong>Дата и время</strong><span>${escapeHTML(fmtDate(state.date))} · ${escapeHTML(state.time || "Не выбрано")}</span></div>
