@@ -1,7 +1,7 @@
 /* РЕДАКТИРУЙ ЭТОТ ФАЙЛ: тексты, цвета, гифки и варианты. */
 window.INVITE_CONFIG = {
   pageTitle: "Маленькое приглашение",
-  footerText: "сделано с теплом",
+  footerText: "сделано с теплом · v3",
 
   // Твой публичный username в Telegram (без @).
   telegram: {
@@ -36,23 +36,23 @@ window.INVITE_CONFIG = {
      Светлые пастельные палитры, подобранные под розово-серо-голубую гамму.
      Цвет мягко перетекает от экрана к экрану (порядок = номер шага). */
   theme: {
-    text: "#4b3a55",
-    muted: "#7e6a8a"
+    text: "#3d4460",
+    muted: "#6f7592"
   },
   palettes: [
-    { bg: "#f3efff", primary: "#f2709f", primaryDark: "#cf4b80", blobA: "#ffc4da", blobB: "#c9d6ff", blobC: "#e6d2ff" }, // 0 старт: лавандовый
-    { bg: "#fff0e8", primary: "#f59a86", primaryDark: "#d9705f", blobA: "#ffd0bd", blobB: "#ffc4da", blobC: "#fff0b8" }, // 1 конверт: персиковый
-    { bg: "#ffeef6", primary: "#ec6fb5", primaryDark: "#c4478f", blobA: "#ffc2e2", blobB: "#d6d2ff", blobC: "#ffd9e6" }, // 2 вопрос: розовая жвачка
-    { bg: "#ffeceb", primary: "#f2607f", primaryDark: "#d13e61", blobA: "#ffbfcb", blobB: "#ffdca8", blobC: "#e3d4ff" }, // 3 ура: клубничный
-    { bg: "#ecf1ff", primary: "#7f95f0", primaryDark: "#5c72d6", blobA: "#c6d3ff", blobB: "#f0cdff", blobC: "#c3e8ff" }, // 4 дата: васильковый
-    { bg: "#e8f5ff", primary: "#6fb2ee", primaryDark: "#4a91d4", blobA: "#bfe0ff", blobB: "#dcd2ff", blobC: "#ffd0e0" }, // 5 план: небесный
-    { bg: "#f1ebff", primary: "#a583f2", primaryDark: "#8160d8", blobA: "#dccfff", blobB: "#ffc8dc", blobC: "#c9e6ff" }, // 6 детали: сиреневый
-    { bg: "#fff0f5", primary: "#f2709f", primaryDark: "#cf4b80", blobA: "#ffc4da", blobB: "#d6d2ff", blobC: "#ffe0cc" }  // 7 итог: нежно-розовый
+    { bg: "#eef3ff", primary: "#7f93ee", primaryDark: "#5d70d4", blobA: "#cddaff", blobB: "#e7d6ff", blobC: "#ffd6e6" }, // 0 старт
+    { bg: "#f1efff", primary: "#9b8cf0", primaryDark: "#7a6ad6", blobA: "#ddd6ff", blobB: "#cfe3ff", blobC: "#ffd6e6" }, // 1 конверт
+    { bg: "#eaf4ff", primary: "#6fa8ee", primaryDark: "#4f8bd6", blobA: "#c8e0ff", blobB: "#e2d6ff", blobC: "#ffd6e4" }, // 2 вопрос
+    { bg: "#f4eeff", primary: "#b07fe8", primaryDark: "#8f5ccc", blobA: "#e2d2ff", blobB: "#ffc9e0", blobC: "#cfe6ff" }, // 3 ура
+    { bg: "#ebf6ff", primary: "#6bb5e8", primaryDark: "#4896cc", blobA: "#c3e6ff", blobB: "#dcd6ff", blobC: "#d3f0ee" }, // 4 дата
+    { bg: "#edf1ff", primary: "#7d8ff0", primaryDark: "#5b6ed6", blobA: "#cbd5ff", blobB: "#e6d9ff", blobC: "#c8ecff" }, // 5 план
+    { bg: "#f2eeff", primary: "#9a86ee", primaryDark: "#7a66d4", blobA: "#dcd2ff", blobB: "#c9defd", blobC: "#ffd6e6" }, // 6 детали
+    { bg: "#eff3ff", primary: "#8296f0", primaryDark: "#6075d6", blobA: "#d0dbff", blobB: "#ead9ff", blobC: "#ffd9e8" }  // 7 итог
   ],
 
   animation: {
     enabled: true,
-    durationMs: 520,
+    durationMs: 380,
     confettiCount: 46
   },
 

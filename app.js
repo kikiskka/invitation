@@ -162,8 +162,8 @@
     window.setTimeout(() => {
       state.step = step;
       renderStep();
-      window.setTimeout(() => { state.busy = false; }, state.motion ? 350 : 0);
-    }, state.motion ? 240 : 0);
+      window.setTimeout(() => { state.busy = false; }, state.motion ? 200 : 0);
+    }, state.motion ? 200 : 0);
   }
 
   function saveFields() {
@@ -206,7 +206,7 @@
         img.decoding = "async";
         img.onload = () => {
           stage.replaceChildren(img);
-          requestAnimationFrame(() => requestAnimationFrame(() => box.classList.add("ready")));
+          requestAnimationFrame(() => box.classList.add("ready"));
         };
         img.onerror = () => tryNext(i + 1);
         img.src = sources[i];
@@ -287,7 +287,7 @@
       const r = env.getBoundingClientRect();
       burst(r.left + r.width / 2, r.top + r.height / 2, 12);
     }
-    window.setTimeout(() => go(2), state.motion ? 1200 : 0);
+    window.setTimeout(() => go(2), state.motion ? 950 : 0);
   }
 
   function renderInvitation() {
@@ -604,7 +604,7 @@
   /* ---------- Эффекты ---------- */
   function palette() {
     const p = (C.palettes || [])[state.step];
-    return [p?.primary || "#ee7ba6", "#ffd27a", "#a8dcc9", "#b9a5ee", "#f59bb4", "#8fc3f5"];
+    return ["#f27aa5", "#ffd27a", "#a8dcc9", "#b9a5ee", "#f59bb4", "#8fc3f5"];
   }
 
   function celebrate() {
@@ -633,7 +633,7 @@
         el.className = "float-heart";
         el.textContent = ["♡", "♥", "✦"][i % 3];
         el.style.left = `${rand(5, 95)}%`;
-        el.style.color = palette()[i % 2 === 0 ? 0 : 4];
+        el.style.color = i % 2 === 0 ? "#f27aa5" : "#f59bb4";
         el.style.fontSize = `${rand(16, 36)}px`;
         el.style.animationDelay = `${rand(0, 0.9)}s`;
         effectsLayer.appendChild(el);
@@ -804,6 +804,15 @@
   });
 
   /* ---------- Старт ---------- */
+  function preloadGifs() {
+    const base = C.gifBase ?? "gifs/";
+    Object.values(C.gifs || {}).forEach(name => {
+      const probe = new Image();
+      probe.onerror = () => { const alt = new Image(); alt.src = name; };
+      probe.src = base + name;
+    });
+  }
+  preloadGifs();
   setBaseTheme();
   initBgHearts();
   renderStep();

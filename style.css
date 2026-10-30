@@ -7,12 +7,12 @@
 @property --blob-c        { syntax: "<color>"; inherits: true; initial-value: #ffe7d6; }
 
 :root {
-  --text: #4b3a55;
-  --muted: #7e6a8a;
+  --text: #3d4460;
+  --muted: #6f7592;
   --accent: color-mix(in srgb, var(--primary) 16%, white);
   --border: color-mix(in srgb, var(--primary-dark) 24%, transparent);
   --surface: rgba(255, 255, 255, .8);
-  --duration: 520ms;
+  --duration: 380ms;
   --ease: cubic-bezier(.22, 1, .36, 1);
   --spring: cubic-bezier(.34, 1.56, .64, 1);
 
@@ -33,7 +33,7 @@ body {
   min-height: 100vh;
   color: var(--text);
   font-family: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
-  background: radial-gradient(circle at 12% 6%, rgba(255, 255, 255, .9), transparent 38%);
+  background: radial-gradient(circle at 12% 6%, rgba(255, 255, 255, .95), transparent 40%);
   overflow-x: hidden;
   -webkit-tap-highlight-color: transparent;
 }
@@ -73,7 +73,7 @@ textarea:focus-visible,
 .bg-heart {
   position: absolute;
   bottom: -40px;
-  color: var(--primary);
+  color: #f27aa5;
   opacity: 0;
   animation: bgHeart var(--t, 18s) linear var(--d, 0s) infinite;
 }
@@ -135,7 +135,7 @@ textarea:focus-visible,
   height: 100%;
   border-radius: inherit;
   background: linear-gradient(90deg, color-mix(in srgb, var(--primary) 60%, white), var(--primary));
-  transition: width 800ms var(--ease);
+  transition: width 600ms var(--ease);
 }
 #progress-bar::after {
   content: "♥";
@@ -145,8 +145,8 @@ textarea:focus-visible,
   translate: 0 -52%;
   font-size: 15px;
   line-height: 1;
-  color: var(--primary-dark);
-  filter: drop-shadow(0 2px 3px color-mix(in srgb, var(--primary-dark) 35%, transparent));
+  color: #ee6c9b;
+  filter: drop-shadow(0 2px 3px rgba(238, 108, 155, .35));
   animation: beat 1.6s ease-in-out infinite;
 }
 
@@ -225,80 +225,63 @@ p {
 /* ---------- Анимация появления ---------- */
 .screen.enter .card { animation: cardIn var(--duration) var(--ease) both; }
 .screen.enter .card > * {
-  animation: rise 640ms var(--ease) both;
-  animation-delay: calc(var(--i, 0) * 60ms + 70ms);
+  animation: rise 420ms var(--ease) both;
+  animation-delay: calc(var(--i, 0) * 40ms + 30ms);
 }
 
 /* ---------- Гифки ---------- */
 .hero-art {
   position: relative;
-  width: min(240px, 62vw);
-  height: min(240px, 62vw);
+  display: block;
+  width: min(220px, 58vw);
+  height: min(220px, 58vw);
   flex: none;
-  margin: 0 auto 20px;
+  margin: 0 auto 22px;
   cursor: pointer;
   -webkit-user-select: none;
   user-select: none;
 }
-.hero-art.sm { width: min(150px, 40vw); height: min(150px, 40vw); margin-bottom: 16px; }
+.hero-art.sm { width: min(140px, 38vw); height: min(140px, 38vw); margin-bottom: 18px; }
 
-/* мягкое свечение за гифкой в цвет экрана */
-.hero-art::before {
-  content: "";
-  position: absolute;
-  inset: 8%;
-  border-radius: 50%;
-  background: radial-gradient(circle, color-mix(in srgb, var(--primary) 38%, white) 0%, transparent 68%);
-  filter: blur(14px);
-  opacity: 0;
-  transform: scale(.7);
-  transition: opacity 900ms ease, transform 1200ms var(--ease);
-}
-.hero-art.ready::before {
-  opacity: .85;
-  transform: scale(1);
-  animation: glow 4s ease-in-out 1.2s infinite;
-}
+.gif-stage { position: absolute; inset: 0; display: block; }
+.hero-art.ready .gif-stage { animation: float 4.5s ease-in-out infinite; }
+.hero-art.bounce .gif-stage { animation: hop 600ms var(--spring); }
 
-.gif-stage {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-}
-.hero-art.ready .gif-stage { animation: float 4.2s ease-in-out infinite; }
-.hero-art.bounce .gif-stage { animation: hop 650ms var(--spring); }
-
+/* стикер: если у гифки сплошной фон, он станет аккуратным скруглённым квадратом */
 .custom-gif {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  border-radius: 28px;
   opacity: 0;
-  transform: translateY(14px) scale(.9);
-  transition: opacity 700ms ease, transform 1000ms var(--spring);
-  filter: drop-shadow(0 12px 14px color-mix(in srgb, var(--primary-dark) 22%, transparent));
+  transform: scale(.94);
+  transition: opacity 300ms ease, transform 450ms var(--spring);
+  filter: drop-shadow(0 10px 14px color-mix(in srgb, var(--primary-dark) 20%, transparent));
 }
 .hero-art.ready .custom-gif { opacity: 1; transform: none; }
 
 .mascot {
-  font-size: 5.2rem;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 5rem;
   opacity: 0;
-  transform: scale(.7);
-  transition: opacity 600ms ease, transform 800ms var(--spring);
+  transition: opacity 300ms ease;
 }
-.hero-art.ready .mascot { opacity: 1; transform: none; }
+.hero-art.ready .mascot { opacity: 1; }
 
 .gif-skeleton {
   position: absolute;
-  inset: 22%;
-  border-radius: 50%;
-  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, .85) 50%, transparent 70%) var(--accent);
+  inset: 0;
+  border-radius: 28px;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, .8) 50%, transparent 70%) var(--accent);
   background-size: 220% 100%;
-  animation: shimmer 1.4s linear infinite;
-  transition: opacity 400ms;
+  animation: shimmer 1.2s linear infinite;
+  transition: opacity 250ms;
 }
-.hero-art.ready .gif-skeleton { opacity: 0; }
+.hero-art.ready .gif-skeleton { opacity: 0; pointer-events: none; }
 
 /* ---------- Кнопки ---------- */
 .primary-btn, .secondary-btn, .ghost-btn {
