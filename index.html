@@ -3,22 +3,35 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#fff4f7">
+  <meta name="theme-color" content="#fff1f6">
   <meta name="description" content="Маленькое интерактивное приглашение">
   <title>Приглашение для тебя</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap">
   <link rel="stylesheet" href="style.css">
   <script src="config.js" defer></script>
   <script src="app.js" defer></script>
 </head>
 <body>
-  <div class="ambient ambient-one" aria-hidden="true"></div>
-  <div class="ambient ambient-two" aria-hidden="true"></div>
+  <div class="ambient ambient-a" aria-hidden="true"></div>
+  <div class="ambient ambient-b" aria-hidden="true"></div>
+  <div class="ambient ambient-c" aria-hidden="true"></div>
+  <div id="bg-hearts" aria-hidden="true"></div>
+
   <main class="app-shell">
-    <div class="topline"><span class="brand-mark">♡</span><span id="step-label">маленькое приключение</span><button id="motion-toggle" class="icon-button" type="button" aria-label="Переключить анимации" title="Переключить анимации">✦</button></div>
-    <div class="progress" aria-label="Прогресс"><div id="progress-bar"></div></div>
-    <section id="screen" class="screen" aria-live="polite"></section>
+    <div class="topline">
+      <span class="brand-mark" aria-hidden="true">♡</span>
+      <span id="step-label">маленькое приключение</span>
+      <button id="motion-toggle" class="icon-button" type="button" aria-label="Переключить анимации" title="Переключить анимации">✦</button>
+    </div>
+    <div class="progress" role="progressbar" aria-label="Прогресс" aria-valuemin="0" aria-valuemax="100">
+      <div id="progress-bar"></div>
+    </div>
+    <section id="screen" class="screen"></section>
     <div class="footer-note" id="footer-note">сделано с теплом</div>
   </main>
+
   <div id="effects-layer" aria-hidden="true"></div>
   <noscript>Для работы приглашения необходимо включить JavaScript.</noscript>
 </body>
