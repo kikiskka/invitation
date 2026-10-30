@@ -187,6 +187,8 @@ textarea:focus-visible,
 .card.center { text-align: center; }
 
 .eyebrow {
+  position: relative;
+  z-index: 1;
   display: inline-flex;
   align-items: center;
   gap: 7px;
@@ -231,13 +233,14 @@ p {
 .hero-art {
   position: relative;
   width: min(240px, 62vw);
-  aspect-ratio: 1;
-  margin: 0 auto 6px;
+  height: min(240px, 62vw);
+  flex: none;
+  margin: 0 auto 20px;
   cursor: pointer;
   -webkit-user-select: none;
   user-select: none;
 }
-.hero-art.sm { width: min(150px, 40vw); }
+.hero-art.sm { width: min(150px, 40vw); height: min(150px, 40vw); margin-bottom: 16px; }
 
 /* мягкое свечение за гифкой в цвет экрана */
 .hero-art::before {
@@ -602,8 +605,8 @@ textarea { min-height: 130px; resize: vertical; }
   to   { opacity: 1; transform: none; }
 }
 @keyframes float {
-  0%, 100% { transform: translateY(0) rotate(-1.5deg); }
-  50%      { transform: translateY(-9px) rotate(1.5deg); }
+  0%, 100% { transform: translateY(0) rotate(-1deg); }
+  50%      { transform: translateY(-4px) rotate(1deg); }
 }
 @keyframes hop {
   0%   { transform: translateY(0) scale(1); }

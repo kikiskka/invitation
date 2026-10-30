@@ -40,14 +40,14 @@ window.INVITE_CONFIG = {
     muted: "#7e6a8a"
   },
   palettes: [
-    { bg: "#fff1f6", primary: "#ee7ba6", primaryDark: "#d0588a", blobA: "#ffd3e3", blobB: "#e6dcff", blobC: "#ffe7d6" }, // 0 старт
-    { bg: "#fff3ee", primary: "#f2998f", primaryDark: "#d9756d", blobA: "#ffd9cc", blobB: "#ffd3e3", blobC: "#fff0c9" }, // 1 конверт
-    { bg: "#fcf0fb", primary: "#e07cc0", primaryDark: "#bd58a0", blobA: "#f6cdf0", blobB: "#dcd9ff", blobC: "#ffd3e3" }, // 2 вопрос
-    { bg: "#fff0f3", primary: "#f2698f", primaryDark: "#d44a74", blobA: "#ffc9d8", blobB: "#ffe3b8", blobC: "#e6dcff" }, // 3 ура
-    { bg: "#f1f3ff", primary: "#8f9cef", primaryDark: "#6b78d1", blobA: "#d6dcff", blobB: "#f4d4ff", blobC: "#cfeaff" }, // 4 дата
-    { bg: "#eef6ff", primary: "#7fb0ee", primaryDark: "#5a8fd2", blobA: "#cfe5ff", blobB: "#e6dcff", blobC: "#ffd9e6" }, // 5 план
-    { bg: "#f6f0ff", primary: "#a98af0", primaryDark: "#8566d6", blobA: "#e3d6ff", blobB: "#ffd3e3", blobC: "#d3ecff" }, // 6 детали
-    { bg: "#fff1f6", primary: "#ee7ba6", primaryDark: "#d0588a", blobA: "#ffd3e3", blobB: "#e6dcff", blobC: "#ffe7d6" }  // 7 итог
+    { bg: "#f3efff", primary: "#f2709f", primaryDark: "#cf4b80", blobA: "#ffc4da", blobB: "#c9d6ff", blobC: "#e6d2ff" }, // 0 старт: лавандовый
+    { bg: "#fff0e8", primary: "#f59a86", primaryDark: "#d9705f", blobA: "#ffd0bd", blobB: "#ffc4da", blobC: "#fff0b8" }, // 1 конверт: персиковый
+    { bg: "#ffeef6", primary: "#ec6fb5", primaryDark: "#c4478f", blobA: "#ffc2e2", blobB: "#d6d2ff", blobC: "#ffd9e6" }, // 2 вопрос: розовая жвачка
+    { bg: "#ffeceb", primary: "#f2607f", primaryDark: "#d13e61", blobA: "#ffbfcb", blobB: "#ffdca8", blobC: "#e3d4ff" }, // 3 ура: клубничный
+    { bg: "#ecf1ff", primary: "#7f95f0", primaryDark: "#5c72d6", blobA: "#c6d3ff", blobB: "#f0cdff", blobC: "#c3e8ff" }, // 4 дата: васильковый
+    { bg: "#e8f5ff", primary: "#6fb2ee", primaryDark: "#4a91d4", blobA: "#bfe0ff", blobB: "#dcd2ff", blobC: "#ffd0e0" }, // 5 план: небесный
+    { bg: "#f1ebff", primary: "#a583f2", primaryDark: "#8160d8", blobA: "#dccfff", blobB: "#ffc8dc", blobC: "#c9e6ff" }, // 6 детали: сиреневый
+    { bg: "#fff0f5", primary: "#f2709f", primaryDark: "#cf4b80", blobA: "#ffc4da", blobB: "#d6d2ff", blobC: "#ffe0cc" }  // 7 итог: нежно-розовый
   ],
 
   animation: {
